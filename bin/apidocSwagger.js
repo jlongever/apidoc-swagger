@@ -72,6 +72,8 @@ var argv = nomnom
     .option('marked-smartypants', { flag: true, 'default': false,
             help: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
 
+    .option('template', { abbr: 't', 'default': './', help: 'Template file dirname' })
+
     .parse()
 ;
 
@@ -137,7 +139,8 @@ var options = {
     silent        : argv['silent'],
     simulate      : argv['simulate'],
     markdown      : argv['markdown'],
-    marked        : resolveMarkdownOptions(argv)
+    marked        : resolveMarkdownOptions(argv),
+    template      : argv['template']
 };
 
 if (apidocSwagger.createApidocSwagger(options) === false) {
